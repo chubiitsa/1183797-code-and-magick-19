@@ -48,10 +48,10 @@ window.renderStatistics = function (ctx, names, times) {
 
   var maxTime = getMaxElement(times);
 
-  ctx.textBaseline = 'alphabetic';
+  ctx.textBaseline = 'middle';
 
   for (var i = 0; i < names.length; i++) {
-    var barX = CLOUD_X + PADDING + (GAP + BAR_WIDTH) * i;
+    var barX = CLOUD_X + PADDING * 2 + (GAP + BAR_WIDTH) * i;
     var barY = CLOUD_Y + CLOUD__HEIGHT - PADDING;
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], barX, barY);
