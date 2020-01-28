@@ -39,16 +39,19 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var printWizards = function (wizardsArr) {
+var printWizards = function (arr) {
   var fragment = document.createDocumentFragment();
 
-  for (var j = 0; j < wizardsArr.length; j++) {
-    fragment.appendChild(renderWizard(wizardsArr[j]));
+  for (var j = 0; j < arr.length; j++) {
+    fragment.appendChild(renderWizard(arr[j]));
   }
   return fragment;
 };
 
-similarListElement.appendChild(printWizards(wizards));
+var addWizardsToPage = function (list, arr) {
+  return list.appendChild(printWizards(arr));
+};
 
+addWizardsToPage(similarListElement, wizards);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
