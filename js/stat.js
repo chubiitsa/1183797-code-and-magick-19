@@ -29,7 +29,7 @@ var getMaxElement = function (arr) {
 };
 
 var getRandomPercent = function (min, max) {
-  return Math.floor(Math.random() * (max - min) + min).toFixed() + '%';
+  return Math.floor(Math.random() * (max - min) + min) + '%';
 };
 
 var getRandomToneOf = function (hue) {
