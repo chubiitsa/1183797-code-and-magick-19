@@ -8,12 +8,18 @@
   var WIZARDS_COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
   var WIZARDS_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+  var SIMILAR_WIZARDS_NUMBER = 4;
   var SETUP_POSITION = {
     x: 50,
     y: 80,
   };
 
   var setup = document.querySelector('.setup');
+  var setupForm = setup.querySelector('.setup-wizard-form');
+
+  var generateRandomNumber = function (min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
 
   var getRandomElement = function (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
@@ -36,7 +42,10 @@
     WIZARDS_EYES_COLORS: WIZARDS_EYES_COLORS,
     FIREBALL_COLORS: FIREBALL_COLORS,
     SETUP_POSITION: SETUP_POSITION,
+    SIMILAR_WIZARDS_NUMBER: SIMILAR_WIZARDS_NUMBER,
     setup: setup,
+    setupForm: setupForm,
+    generateRandomNumber: generateRandomNumber,
     getRandomElement: getRandomElement,
     transformRgb2Hex: transformRgb2Hex,
   };
