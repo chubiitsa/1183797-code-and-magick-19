@@ -2,10 +2,12 @@
 
 (function () {
   var wizards = [];
-  var similarListElement = document.querySelector('.setup-similar-list');
+  var similarList = document.querySelector('.setup-similar-list');
+  var similar = document.querySelector('.setup-similar');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
+
 
   for (var i = 1; i <= 4; i++) {
     wizards.push({
@@ -25,10 +27,12 @@
     return wizardElement;
   };
 
-
-  window.characters = {
-    renderWizard: renderWizard,
-    similarListElement: similarListElement,
+  window.render = function (data) {
+    var takeNumber = data.length > 4 ? 4 : data.length;
+    similarList.innerHTML = '';
+    for (var j = 0; j < takeNumber; j++) {
+      similarList.appendChild(renderWizard(data[j]));
+    }
+    similar.classList.remove('hidden');
   };
-
 })();

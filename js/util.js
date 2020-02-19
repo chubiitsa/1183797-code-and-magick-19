@@ -9,13 +9,11 @@
   var WIZARDS_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
   var SIMILAR_WIZARDS_NUMBER = 4;
+  var DEBOUNCE_INTERVAL = 300; // ms
   var SETUP_POSITION = {
     x: 50,
     y: 80,
   };
-
-  var setup = document.querySelector('.setup');
-  var setupForm = setup.querySelector('.setup-wizard-form');
 
   var generateRandomNumber = function (min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -33,6 +31,20 @@
     return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
   };
 
+  var debounce = function (cb) {
+    var lastTimeout = null;
+
+    return function () {
+      var parameters = arguments;
+      if (lastTimeout) {
+        window.clearTimeout(lastTimeout);
+      }
+      lastTimeout = window.setTimeout(function () {
+        cb.apply(null, parameters);
+      }, DEBOUNCE_INTERVAL);
+    };
+  };
+
   window.util = {
     ESC_KEY: ESC_KEY,
     ENTER_KEY: ENTER_KEY,
@@ -43,10 +55,9 @@
     FIREBALL_COLORS: FIREBALL_COLORS,
     SETUP_POSITION: SETUP_POSITION,
     SIMILAR_WIZARDS_NUMBER: SIMILAR_WIZARDS_NUMBER,
-    setup: setup,
-    setupForm: setupForm,
     generateRandomNumber: generateRandomNumber,
     getRandomElement: getRandomElement,
     transformRgb2Hex: transformRgb2Hex,
+    debounce: debounce,
   };
 })();
